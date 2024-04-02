@@ -1,0 +1,32 @@
+﻿@model List<MyMongoDbAjaxProject.Dal.Entities.Category>
+@{
+    Layout = "~/Views/Shared/_MongoLayout.cshtml";
+    int count = 0;
+}
+
+<!DOCTYPE html>
+
+<br />
+<br />
+<div class="conatiner">
+    <table class="table table-hover">
+        <tr>
+            <th>#</th>
+            <th>Kategori Adı</th>
+            <th>Güncelle</th>
+            <th>Sil</th>
+        </tr>
+        @foreach (var item in Model)
+        {
+            count++;
+            <tr>
+                <td>@count</td>
+                <td>@item.CategoryName</td>
+                <td><a href="/Category/UpdateCategory/@item.CategoryID" class="btn btn-warning">Güncelle</a></td>
+                <td><a href="/Category/DeleteCategory/@item.CategoryID" class="btn btn-danger">Sil</a></td>
+            </tr>
+        }
+    </table>
+    <br />
+    <a href="/Category/CreateCategory" class="btn btn-primary">Yeni Kategori Girişi</a>
+</div>
